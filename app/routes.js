@@ -8,5 +8,6 @@ players = require('./routes/players');
 module.exports = function routes(app) {
 	app.get('/', index);
 	app.get('/players', players.getAllPlayers);
+	app.get('/players/:id', players.getPlayer);
 	app.post('/auth', auth);
 };

@@ -7,7 +7,7 @@ logger = require('./utils/logger')('Server', true);
 expressBunyanLogger = require('express-bunyan-logger');
 bodyParser = require('body-parser');
 jwt = require('express-jwt');
-config = require('./config');
+config = require('./config/app');
 
 routes = require('./app/routes');
 

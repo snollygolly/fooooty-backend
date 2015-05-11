@@ -1,7 +1,7 @@
 'use strict';
 var config, jwt;
 
-config = require('../config');
+config = require('../config/app');
 jwt = require('jsonwebtoken');
 
 module.exports = function auth(req, res) {

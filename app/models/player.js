@@ -1,6 +1,6 @@
 'use strict';
 
-var bookshelf = require('../../db').bookshelf;
+var bookshelf = require('../../config/db').bookshelf;
 
 var Player = bookshelf.Model.extend({
   tableName: 'players'
