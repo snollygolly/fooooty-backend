@@ -13,11 +13,6 @@ routes = require('./app/routes');
 
 app = module.exports = express();
 
-knex = require('knex')(config.DB_CONFIG);
-bookshelf = require('bookshelf')(knex);
-
-app.set('bookshelf', bookshelf);
-
 // Some much needed middleware.
 app.use(expressBunyanLogger.errorLogger());
 
