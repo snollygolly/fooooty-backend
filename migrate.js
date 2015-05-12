@@ -46,6 +46,9 @@ function createTable(tableName) {
       if (Schema[tableName][key].hasOwnProperty('defaultTo')) {
         column.defaultTo(Schema[tableName][key].defaultTo);
       }
+      if (Schema[tableName][key].hasOwnProperty('comment')) {
+        column.comment(Schema[tableName][key].comment);
+      }
     });
   });
 }
