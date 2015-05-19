@@ -370,7 +370,7 @@ var Schema = {
       type: 'integer',
       nullable: false,
       unsigned: true,
-      comment: "ID of the zone left to right quick to slow"
+      comment: "ID of the zone left to right slow to quick"
     },
     zone_name: {
       type: 'string',
