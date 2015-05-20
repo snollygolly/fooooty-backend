@@ -10,7 +10,7 @@ var Schema = {
       nullable: false,
       unsigned: true,
       comment: "ID of the manager who owns this club"
-    },	
+    },
     stadium_id: {
       type: 'integer',
       nullable: false,
@@ -479,7 +479,6 @@ var Schema = {
     user_revert: {
       type: 'dateTime',
       nullable: false,
-      unsigned: true,
       comment: "Date and time at which this user account reverts back to manager from purchased director or chairman"
     },
     user_visas: {
@@ -491,7 +490,6 @@ var Schema = {
     user_cookieAccept: {
       type: 'dateTime',
       nullable: false,
-      unsigned: true,
       comment: "Date and time at which this user last accepted the cookie notice"
     }
   }
