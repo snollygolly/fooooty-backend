@@ -2,16 +2,15 @@
 
 var bookshelf = require('../../config/db').bookshelf;
 
-var Player = bookshelf.Model.extend({
-  tableName: 'players'
+var Club = bookshelf.Model.extend({
+  tableName: 'clubs'
 });
 
 var obj = {
-  first_name: "Test",
-  last_name: "Player"
+  name: "Test Club"
 };
 
 module.exports = {
-	Player: Player,
+	Club: Club,
   obj: obj
 };

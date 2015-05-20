@@ -1,10 +1,10 @@
 'use strict';
 
-var Model = require('./../models/Player');
+var Model = require('./../models/Club');
 
-/* Get all players */
-var getAllPlayers = function (req, res) {
-	new Model.Player().fetchAll()
+/* Get all clubs */
+var getAllClubs = function (req, res) {
+	new Model.Club().fetchAll()
 		.then(function (model) {
 			res.json(model);
 		}).catch(function (error) {
@@ -13,10 +13,10 @@ var getAllPlayers = function (req, res) {
 		});
 };
 
-/* Get a player */
-var getPlayer = function (req, res) {
-	var playerId = req.params.id;
-	new Model.Player().where('id', playerId)
+/* Get a club */
+var getClub = function (req, res) {
+	var clubId = req.params.id;
+	new Model.Club().where('id', clubId)
 		.fetch()
 		.then(function (model) {
 			res.json(model);
@@ -26,9 +26,9 @@ var getPlayer = function (req, res) {
 		});
 };
 
-/* Create a player */
-var createPlayer = function (req, res) {
-	new Model.Player(Model.obj)
+/* Create a club */
+var createClub = function (req, res) {
+	new Model.Club(Model.obj)
 		.save()
 		.then(function (model) {
 			res.json(model);
@@ -40,7 +40,7 @@ var createPlayer = function (req, res) {
 
 /* Exports all methods */
 module.exports = {
-	getAllPlayers: getAllPlayers,
-	getPlayer: getPlayer,
-	createPlayer: createPlayer
+	getAllClubs: getAllClubs,
+	getClub: getClub,
+	createClub: createClub
 };
