@@ -224,7 +224,7 @@ var Schema = {
       nullable: false,
       comment: "What position does this botmanager favor"
     },
-    bot_OST: {
+    bot_ost: {
       type: 'integer',
       nullable: false,
       unsigned: true,
@@ -334,7 +334,7 @@ var Schema = {
       unsigned: true,
       comment: "Number of clubs in this division"
     },
-    division_regionalLocation: {
+    division_regional_location: {
       type: 'string',
       maxlength: 13,
       nullable: false,
@@ -391,7 +391,7 @@ var Schema = {
       unsigned: true,
       comment: "ID of the nation who owns this stadium"
     },
-    stadium_regionalLocation: {
+    stadium_regional_location: {
       type: 'string',
       maxlength: 13,
       nullable: false,
@@ -446,7 +446,7 @@ var Schema = {
       nullable: false,
       comment: "Email address of this user"
     },
-    user_passwordHash: {
+    user_password_hash: {
       type: 'string',
       maxlength: 64,
       nullable: false,
@@ -487,7 +487,7 @@ var Schema = {
       unsigned: true,
       comment: "Number of travel visas in this users account"
     },
-    user_cookieAccept: {
+    user_cookie_accept: {
       type: 'dateTime',
       nullable: false,
       comment: "Date and time at which this user last accepted the cookie notice"
