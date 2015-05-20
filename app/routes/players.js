@@ -26,8 +26,21 @@ var getPlayer = function (req, res) {
 		});
 };
 
+/* Create a player */
+var createPlayer = function (req, res) {
+	new Model.Player(Model.model)
+		.save()
+		.then(function (player) {
+			res.json(player);
+		}).catch(function (error) {
+			console.log(error);
+			res.send('An error occured');
+		});
+};
+
 /* Exports all methods */
 module.exports = {
 	getAllPlayers: getAllPlayers,
-	getPlayer: getPlayer
+	getPlayer: getPlayer,
+	createPlayer: createPlayer
 };

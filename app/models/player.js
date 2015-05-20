@@ -6,6 +6,12 @@ var Player = bookshelf.Model.extend({
   tableName: 'players'
 });
 
+var model = {
+  first_name: "Test",
+  last_name: "Player"
+};
+
 module.exports = {
-	Player: Player
+	Player: Player,
+  model: model
 };
