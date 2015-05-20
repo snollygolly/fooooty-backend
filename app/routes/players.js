@@ -17,7 +17,7 @@ var getAllPlayers = function (req, res) {
 var getPlayer = function (req, res) {
 	var playerId = req.params.id;
 	new Model.Player().where('id', playerId)
-		.fetch()
+		.fetch({withRelated: ['club']})
 		.then(function (model) {
 			res.json(model);
 		}).catch(function (error) {

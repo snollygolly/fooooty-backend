@@ -3,7 +3,10 @@
 var bookshelf = require('../../config/db').bookshelf;
 
 var Club = bookshelf.Model.extend({
-  tableName: 'clubs'
+  tableName: 'clubs',
+  players: function(){
+    return this.hasMany(Player);
+  }
 });
 
 var obj = {
