@@ -14,7 +14,7 @@ var Player = bookshelf.Model.extend({
 var create = function(){
   return {
     first_name: faker.name.firstName(),
-    last_name: faker.name.lastName() 
+    last_name: faker.name.lastName()
   };
 }
 
