@@ -26,6 +26,19 @@ var getNation = function (req, res) {
 		});
 };
 
+/* Get all clubs in a nation */
+var getAllClubsFromNation = function (req, res) {
+	var nationId = req.params.id;
+	new Model.Nation().where('id', nationId)
+		.fetch({withRelated: ['clubs']})
+		.then(function (model) {
+			res.json(model);
+		}).catch(function (error) {
+			console.log(error);
+			res.send('An error occured');
+		});
+};
+
 /* Create a nation */
 var createNation = function (req, res) {
 	new Model.Nation(Model.create())
@@ -42,5 +55,6 @@ var createNation = function (req, res) {
 module.exports = {
 	getAllNations: getAllNations,
 	getNation: getNation,
+	getAllClubsFromNation: getAllClubsFromNation,
 	createNation: createNation
 };

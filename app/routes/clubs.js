@@ -26,6 +26,19 @@ var getClub = function (req, res) {
 		});
 };
 
+/* Get all players in a club */
+var getAllPlayersFromClub = function (req, res) {
+	var clubId = req.params.id;
+	new Model.Club().where('id', clubId)
+		.fetch({withRelated: ['players']})
+		.then(function (model) {
+			res.json(model);
+		}).catch(function (error) {
+			console.log(error);
+			res.send('An error occured');
+		});
+};
+
 /* Create a club */
 var createClub = function (req, res) {
 	new Model.Club(Model.create())
@@ -42,5 +55,6 @@ var createClub = function (req, res) {
 module.exports = {
 	getAllClubs: getAllClubs,
 	getClub: getClub,
+	getAllPlayersFromClub: getAllPlayersFromClub,
 	createClub: createClub
 };

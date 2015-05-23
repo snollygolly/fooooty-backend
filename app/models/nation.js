@@ -1,7 +1,7 @@
 'use strict';
 
 var bookshelf = require('../../config/db').bookshelf;
-var Club = require('./Club').Club;
+var Club = require('./club').Club;
 var faker = require('faker');
 
 var Nation = bookshelf.Model.extend({

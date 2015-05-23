@@ -19,12 +19,14 @@ module.exports = function routes(app) {
 	//All "club" routes
 	app.get('/api/v1/clubs', clubs.getAllClubs);
 	app.get('/api/v1/clubs/:id', clubs.getClub);
+	app.get('/api/v1/clubs/:id/players', clubs.getAllPlayersFromClub);
 	//Simulation Routes
 	app.post('/api/v1/clubs', clubs.createClub);
 
 	//All "nation" routes
 	app.get('/api/v1/nations', nations.getAllNations);
 	app.get('/api/v1/nations/:id', nations.getNation);
+	app.get('/api/v1/nations/:id/clubs', nations.getAllClubsFromNation);
 	//Simulation Routes
 	app.post('/api/v1/nations', nations.createNation);
 
