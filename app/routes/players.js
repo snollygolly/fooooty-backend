@@ -28,7 +28,7 @@ var getPlayer = function (req, res) {
 
 /* Create a player */
 var createPlayer = function (req, res) {
-	new Model.Player(Model.obj)
+	new Model.Player(Model.create())
 		.save()
 		.then(function (model) {
 			res.json(model);

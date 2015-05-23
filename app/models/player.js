@@ -2,6 +2,7 @@
 
 var bookshelf = require('../../config/db').bookshelf;
 var Club = require('./Club').Club;
+var faker = require('faker');
 
 var Player = bookshelf.Model.extend({
   tableName: 'players',
@@ -10,12 +11,14 @@ var Player = bookshelf.Model.extend({
   }
 });
 
-var obj = {
-  first_name: "Test",
-  last_name: "Player"
-};
+var create = function(){
+  return {
+    first_name: faker.name.firstName(),
+    last_name: faker.name.lastName() 
+  };
+}
 
 module.exports = {
 	Player: Player,
-  obj: obj
+  create: create
 };

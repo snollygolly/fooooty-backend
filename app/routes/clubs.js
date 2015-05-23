@@ -28,7 +28,7 @@ var getClub = function (req, res) {
 
 /* Create a club */
 var createClub = function (req, res) {
-	new Model.Club(Model.obj)
+	new Model.Club(Model.create())
 		.save()
 		.then(function (model) {
 			res.json(model);

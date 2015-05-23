@@ -1,6 +1,7 @@
 'use strict';
 
 var bookshelf = require('../../config/db').bookshelf;
+var faker = require('faker');
 
 var Club = bookshelf.Model.extend({
   tableName: 'clubs',
@@ -9,11 +10,13 @@ var Club = bookshelf.Model.extend({
   }
 });
 
-var obj = {
-  name: "Test Club"
-};
+var create = function(){
+  return {
+    name: faker.company.companyName()
+  };
+}
 
 module.exports = {
 	Club: Club,
-  obj: obj
+  create: create
 };
