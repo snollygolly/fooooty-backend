@@ -1,13 +1,13 @@
 'use strict';
 
 var bookshelf = require('../../config/db').bookshelf;
-var Club = require('./club').Club;
+var Division = require('./division').Division;
 var faker = require('faker');
 
 var Nation = bookshelf.Model.extend({
   tableName: 'nations',
-  clubs: function(){
-    return this.hasMany(Club);
+  divisions: function(){
+    return this.hasMany(Division);
   }
 });
 

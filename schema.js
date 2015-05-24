@@ -29,12 +29,6 @@ var Schema = {
       unsigned: true,
       comment: "Position within the division this club belongs to"
     },
-    nation_id: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "ID of the nation this club belongs to"
-    },
     name: {
       type: 'string',
       maxlength: 255,
@@ -297,6 +291,12 @@ var Schema = {
       type: 'increments',
       nullable: false,
       primary: true
+    },
+    nation_id: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "ID of the nation this division belongs to"
     },
     name: {
       type: 'string',
