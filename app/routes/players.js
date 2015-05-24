@@ -29,6 +29,20 @@ var Player = {
 			});
 	},
 
+	/* Get a player with his club */
+	getPlayerWithClub: function (req, res) {
+		var playerId = req.params.id;
+		new Model.Player()
+			.where('id', playerId)
+			.fetch({withRelated: ['club']})
+			.then(function (model) {
+				res.json(model);
+			}).catch(function (error) {
+				console.log(error);
+				res.send('An error occured');
+			});
+	},
+
 	/* Join a club */
 	joinClub: function (req, res) {
 		var playerId = req.params.id;
