@@ -2,6 +2,7 @@
 
 var bookshelf = require('../../config/db').bookshelf;
 var Player = require('./player').Player;
+var Division = require('./division').Division;
 var Nation = require('./nation').Nation;
 var faker = require('faker');
 
@@ -12,6 +13,9 @@ var Club = bookshelf.Model.extend({
   },
   nation: function(){
     return this.belongsTo(Nation);
+  },
+  division: function(){
+    return this.belongsTo(Division);
   }
 });
 

@@ -37,6 +37,7 @@ module.exports = function routes(app) {
 	//All "division" routes
 	app.get('/api/v1/divisions', divisions.getAllDivisions);
 	app.get('/api/v1/divisions/:id', divisions.getDivision);
+	app.get('/api/v1/divisions/:id/clubs', divisions.getAllClubsFromDivision);
 	//Creation Routes
 	app.post('/api/v1/divisions', divisions.createDivision);
 
