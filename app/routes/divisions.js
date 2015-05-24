@@ -43,6 +43,40 @@ var Division = {
 			});
 	},
 
+	/* Join a nation */
+	joinNation: function (req, res) {
+		var divisionId = req.params.id;
+		var nationId = parseInt(req.params.nid);
+		new Model.Division()
+			.where('id', divisionId)
+			.fetch()
+			.then(function (model) {
+				model.set('nation_id', nationId);
+				model.save();
+				res.json(model);
+			}).catch(function (error) {
+				console.log(error);
+				res.send('An error occured');
+			});
+	},
+
+	/* Leave a nation */
+	leaveNation: function (req, res) {
+		var divisionId = req.params.id;
+		var nationId = parseInt(req.params.nid);
+		new Model.Division()
+			.where('id', divisionId)
+			.fetch()
+			.then(function (model) {
+				model.set('nation_id', null);
+				model.save();
+				res.json(model);
+			}).catch(function (error) {
+				console.log(error);
+				res.send('An error occured');
+			});
+	},
+
 	/* Create a division */
 	createDivision: function (req, res) {
 		new Model.Division(Model.create())

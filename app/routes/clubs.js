@@ -43,6 +43,40 @@ var Club = {
 			});
 	},
 
+	/* Join a division */
+	joinDivision: function (req, res) {
+		var clubId = req.params.id;
+		var divisionId = parseInt(req.params.did);
+		new Model.Club()
+			.where('id', clubId)
+			.fetch()
+			.then(function (model) {
+				model.set('division_id', divisionId);
+				model.save();
+				res.json(model);
+			}).catch(function (error) {
+				console.log(error);
+				res.send('An error occured');
+			});
+	},
+
+	/* Leave a division */
+	leaveDivision: function (req, res) {
+		var clubId = req.params.id;
+		var divisionId = parseInt(req.params.did);
+		new Model.Club()
+			.where('id', clubId)
+			.fetch()
+			.then(function (model) {
+				model.set('division_id', null);
+				model.save();
+				res.json(model);
+			}).catch(function (error) {
+				console.log(error);
+				res.send('An error occured');
+			});
+	},
+
 	/* Create a club */
 	createClub: function (req, res) {
 		new Model.Club(Model.create())

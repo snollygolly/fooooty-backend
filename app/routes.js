@@ -25,8 +25,19 @@ module.exports = function routes(app) {
 	app.get('/api/v1/clubs', clubs.getAllClubs);
 	app.get('/api/v1/clubs/:id', clubs.getClub);
 	app.get('/api/v1/clubs/:id/players', clubs.getAllPlayersFromClub);
+	app.put('/api/v1/clubs/:id/divisions/:did', clubs.joinDivision);
+	app.delete('/api/v1/clubs/:id/divisions/:did', clubs.leaveDivision);
 	//Creation Routes
 	app.post('/api/v1/clubs', clubs.createClub);
+
+	//All "division" routes
+	app.get('/api/v1/divisions', divisions.getAllDivisions);
+	app.get('/api/v1/divisions/:id', divisions.getDivision);
+	app.get('/api/v1/divisions/:id/clubs', divisions.getAllClubsFromDivision);
+	app.put('/api/v1/divisions/:id/nations/:nid', divisions.joinNation);
+	app.delete('/api/v1/divisions/:id/nations/:nid', divisions.leaveNation);
+	//Creation Routes
+	app.post('/api/v1/divisions', divisions.createDivision);
 
 	//All "nation" routes
 	app.get('/api/v1/nations', nations.getAllNations);
@@ -34,13 +45,6 @@ module.exports = function routes(app) {
 	app.get('/api/v1/nations/:id/clubs', nations.getAllClubsFromNation);
 	//Creation Routes
 	app.post('/api/v1/nations', nations.createNation);
-
-	//All "division" routes
-	app.get('/api/v1/divisions', divisions.getAllDivisions);
-	app.get('/api/v1/divisions/:id', divisions.getDivision);
-	app.get('/api/v1/divisions/:id/clubs', divisions.getAllClubsFromDivision);
-	//Creation Routes
-	app.post('/api/v1/divisions', divisions.createDivision);
 
 	//Auth routes
 	app.post('/auth', auth);
