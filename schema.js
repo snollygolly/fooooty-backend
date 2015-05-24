@@ -298,43 +298,37 @@ var Schema = {
       nullable: false,
       primary: true
     },
-    division_id: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "ID of the division"
-    },
-    division_name: {
+    name: {
       type: 'string',
       maxlength: 100,
       nullable: false,
       comment: "Full name of the division"
     },
-    division_tier: {
+    tier: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "Number of the tier this division is in"
     },
-    division_depth: {
+    depth: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "Depth within the tier of this division"
     },
-    division_promotion_to: {
+    promotion_to: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "ID of the next division top teams from this division will be promoted to"
     },
-    division_number_of_clubs: {
+    number_of_clubs: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "Number of clubs in this division"
     },
-    division_regional_location: {
+    regional_location: {
       type: 'string',
       maxlength: 13,
       nullable: false,
