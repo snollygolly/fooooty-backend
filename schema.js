@@ -385,37 +385,37 @@ var Schema = {
       unsigned: true,
       comment: "ID of the nation who owns this stadium"
     },
-    stadium_regional_location: {
+    regional_location: {
       type: 'string',
       maxlength: 13,
       nullable: false,
       comment: "Breakdown of exact geographical location within nation of this stadium"
     },
-    stadium_grass: {
+    grass: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "Percent health of playing area grass"
     },
-    stadium_lighting: {
+    lighting: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "Floodlight level of this stadium"
     },
-    stadium_media: {
+    media: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "Quality of media access areas of this stadium"
     },
-    stadium_parking: {
+    parking: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "Number of parking spots in the lot of this stadium"
     },
-    stadium_capacity: {
+    capacity: {
       type: 'integer',
       nullable: false,
       unsigned: true,
