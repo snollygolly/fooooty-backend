@@ -4,6 +4,11 @@ seed:
 	curl -X POST http://127.0.0.1:4000/api/v1/nations -H "Authorization: Bearer $(TOKEN)" && \
 	curl -X POST http://127.0.0.1:4000/api/v1/nations -H "Authorization: Bearer $(TOKEN)"  \
 
+	curl -X POST http://127.0.0.1:4000/api/v1/stadiums -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/stadiums -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/stadiums -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/stadiums -H "Authorization: Bearer $(TOKEN)"  \
+
 	curl -X POST http://127.0.0.1:4000/api/v1/divisions -H "Authorization: Bearer $(TOKEN)" && \
 	curl -X POST http://127.0.0.1:4000/api/v1/divisions -H "Authorization: Bearer $(TOKEN)" && \
 	curl -X POST http://127.0.0.1:4000/api/v1/divisions -H "Authorization: Bearer $(TOKEN)" && \

@@ -385,6 +385,12 @@ var Schema = {
       unsigned: true,
       comment: "ID of the nation who owns this stadium"
     },
+    name: {
+      type: 'string',
+      maxlength: 255,
+      nullable: false,
+      comment: "Name of this stadium"
+    },
     regional_location: {
       type: 'string',
       maxlength: 13,
