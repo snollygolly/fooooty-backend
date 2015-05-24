@@ -29,6 +29,20 @@ var Player = {
 			});
 	},
 
+	/* Get all unsigned players */
+	getAllUnsignedPlayers: function (req, res){
+		new Model.Player()
+			.query('whereNull', 'club_id')
+			.query('limit', '10')
+			.fetchAll()
+			.then(function (model) {
+				res.json(model);
+			}).catch(function (error) {
+				console.log(error);
+				res.send('An error occured');
+			});
+	},
+
 	/* Get a player with his club */
 	getPlayerWithClub: function (req, res) {
 		var playerId = req.params.id;

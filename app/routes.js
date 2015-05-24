@@ -13,6 +13,7 @@ module.exports = function routes(app) {
 	app.get('/', index);
 	//All "players" routes
 	app.get('/api/v1/players', players.getAllPlayers);
+	app.get('/api/v1/players/available', players.getAllUnsignedPlayers);
 	app.get('/api/v1/players/:id', players.getPlayer);
 	app.get('/api/v1/players/:id/clubs', players.getPlayerWithClub);
 	app.put('/api/v1/players/:id/clubs/:cid', players.joinClub);
