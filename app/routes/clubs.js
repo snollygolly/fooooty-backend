@@ -5,7 +5,8 @@ var Model = require('./../models/Club');
 var Club = {
 	/* Get all clubs */
 	getAllClubs: function (req, res) {
-		new Model.Club().fetchAll()
+		new Model.Club()
+			.fetchAll()
 			.then(function (model) {
 				res.json(model);
 			}).catch(function (error) {
@@ -17,7 +18,8 @@ var Club = {
 	/* Get a club */
 	getClub: function (req, res) {
 		var clubId = req.params.id;
-		new Model.Club().where('id', clubId)
+		new Model.Club()
+			.where('id', clubId)
 			.fetch()
 			.then(function (model) {
 				res.json(model);
@@ -30,7 +32,8 @@ var Club = {
 	/* Get all players in a club */
 	getAllPlayersFromClub: function (req, res) {
 		var clubId = req.params.id;
-		new Model.Club().where('id', clubId)
+		new Model.Club()
+			.where('id', clubId)
 			.fetch({withRelated: ['players']})
 			.then(function (model) {
 				res.json(model);
@@ -39,7 +42,7 @@ var Club = {
 				res.send('An error occured');
 			});
 	},
-	
+
 	/* Create a club */
 	createClub: function (req, res) {
 		new Model.Club(Model.create())
