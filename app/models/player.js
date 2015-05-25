@@ -17,7 +17,8 @@ var create = function(){
   return {
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
-    position: utility.getRandomIndex(positions)
+    position: utility.getRandomIndex(positions),
+    health: 100
   };
 }
 
