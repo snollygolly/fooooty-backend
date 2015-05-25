@@ -30,6 +30,8 @@ module.exports = function routes(app) {
 	app.get('/api/v1/clubs/:id/players', clubs.getAllPlayersFromClub);
 	app.put('/api/v1/clubs/:id/divisions/:did', clubs.joinDivision);
 	app.delete('/api/v1/clubs/:id/divisions/:did', clubs.leaveDivision);
+	app.put('/api/v1/clubs/:id/stadiums/:sid', clubs.joinStadium);
+	app.delete('/api/v1/clubs/:id/stadiums/:sid', clubs.leaveStadium);
 	//Creation Routes
 	app.post('/api/v1/clubs', clubs.createClub);
 
