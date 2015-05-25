@@ -29,6 +29,34 @@ var Club = {
 			});
 	},
 
+	/* Get all starting players in a club */
+	getAllStartingPlayersFromClub: function (req, res) {
+		var clubId = req.params.id;
+		new Model.Club()
+			.where('id', clubId)
+			.fetch({withRelated: ['starting_players']})
+			.then(function (model) {
+				res.json(model);
+			}).catch(function (error) {
+				console.log(error);
+				res.send('An error occured');
+			});
+	},
+
+	/* Get all benched players in a club */
+	getAllBenchedPlayersFromClub: function (req, res) {
+		var clubId = req.params.id;
+		new Model.Club()
+			.where('id', clubId)
+			.fetch({withRelated: ['benched_players']})
+			.then(function (model) {
+				res.json(model);
+			}).catch(function (error) {
+				console.log(error);
+				res.send('An error occured');
+			});
+	},
+
 	/* Get all players in a club */
 	getAllPlayersFromClub: function (req, res) {
 		var clubId = req.params.id;

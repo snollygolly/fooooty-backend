@@ -25,6 +25,8 @@ module.exports = function routes(app) {
 	//All "club" routes
 	app.get('/api/v1/clubs', clubs.getAllClubs);
 	app.get('/api/v1/clubs/:id', clubs.getClub);
+	app.get('/api/v1/clubs/:id/players/starting', clubs.getAllStartingPlayersFromClub);
+	app.get('/api/v1/clubs/:id/players/benched', clubs.getAllBenchedPlayersFromClub);
 	app.get('/api/v1/clubs/:id/players', clubs.getAllPlayersFromClub);
 	app.put('/api/v1/clubs/:id/divisions/:did', clubs.joinDivision);
 	app.delete('/api/v1/clubs/:id/divisions/:did', clubs.leaveDivision);
