@@ -2,6 +2,7 @@
 
 var bookshelf = require('../../config/db').bookshelf;
 var Club = require('./club').Club;
+var Bot = require('./club').Bot;
 var faker = require('faker');
 
 var Manager = bookshelf.Model.extend({
@@ -10,7 +11,7 @@ var Manager = bookshelf.Model.extend({
     return this.hasOne(Club);
   },
   bot: function(){
-    //return this.hasOne(Bot);
+    return this.belongsTo(Bot);
   }
 });
 

@@ -10,6 +10,7 @@ var nations = require('./routes/nations');
 var divisions = require('./routes/divisions');
 var stadiums = require('./routes/stadiums');
 var managers = require('./routes/managers');
+var bots = require('./routes/bots');
 
 module.exports = function routes(app) {
 	app.get('/', index);
@@ -72,6 +73,13 @@ module.exports = function routes(app) {
 	app.get('/api/v1/managers/:id/clubs', managers.getManagerWithClub);
 	//Creation Routes
 	app.post('/api/v1/managers', managers.createManager);
+
+	//All "bot" routes
+	app.get('/api/v1/bots', bots.getAllBots);
+	app.get('/api/v1/bots/:id', bots.getBot);
+	app.get('/api/v1/bots/:id/clubs', bots.getAllClubsFromBot);
+	//Creation Routes
+	app.post('/api/v1/bots', bots.createBot);
 
 	//Auth routes
 	app.post('/auth', auth);

@@ -10,7 +10,7 @@ var Schema = {
       maxlength: 255,
       nullable: false,
       comment: "Name of the bot"
-    }
+    },
     position_pref: {
       type: 'string',
       maxlength: 4,
