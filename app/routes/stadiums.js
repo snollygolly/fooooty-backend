@@ -79,7 +79,6 @@ var Stadium = {
 
 	/* Create a stadium */
 	createStadium: function (req, res) {
-		console.log(Model.create());
 		new Model.Stadium(Model.create())
 			.save()
 			.then(function (model) {
