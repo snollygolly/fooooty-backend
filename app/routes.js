@@ -15,10 +15,13 @@ module.exports = function routes(app) {
 	//All "players" routes
 	app.get('/api/v1/players', players.getAllPlayers);
 	app.get('/api/v1/players/available', players.getAllUnsignedPlayers);
+	app.get('/api/v1/players/available/:pos', players.getAllUnsignedPlayersFromPosition);
 	app.get('/api/v1/players/:id', players.getPlayer);
 	app.get('/api/v1/players/:id/clubs', players.getPlayerWithClub);
 	app.put('/api/v1/players/:id/clubs/:cid', players.joinClub);
 	app.delete('/api/v1/players/:id/clubs/:cid', players.leaveClub);
+	app.put('/api/v1/players/:id/start', players.startPlayer);
+	app.put('/api/v1/players/:id/bench', players.benchPlayer);
 	//Creation route
 	app.post('/api/v1/players', players.createPlayer);
 
