@@ -105,6 +105,40 @@ var Club = {
 			});
 	},
 
+	/* Join a stadium */
+	joinStadium: function (req, res) {
+		var clubId = req.params.id;
+		var stadiumId = parseInt(req.params.sid);
+		new Model.Club()
+			.where('id', clubId)
+			.fetch()
+			.then(function (model) {
+				model.set('stadium_id', stadiumId);
+				model.save();
+				res.json(model);
+			}).catch(function (error) {
+				console.log(error);
+				res.send('An error occured');
+			});
+	},
+
+	/* Leave a leave */
+	leaveStadium: function (req, res) {
+		var clubId = req.params.id;
+		var divisionId = parseInt(req.params.did);
+		new Model.Club()
+			.where('id', clubId)
+			.fetch()
+			.then(function (model) {
+				model.set('stadium_id', stadiumId);
+				model.save();
+				res.json(model);
+			}).catch(function (error) {
+				console.log(error);
+				res.send('An error occured');
+			});
+	},
+
 	/* Create a club */
 	createClub: function (req, res) {
 		new Model.Club(Model.create())
