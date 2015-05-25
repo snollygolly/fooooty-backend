@@ -4,6 +4,7 @@ var bookshelf = require('../../config/db').bookshelf;
 var Player = require('./player').Player;
 var Division = require('./division').Division;
 var Stadium = require('./stadium').Stadium;
+var Manager = require('./stadium').Manager;
 var faker = require('faker');
 
 var Club = bookshelf.Model.extend({
@@ -24,6 +25,9 @@ var Club = bookshelf.Model.extend({
   },
   stadium: function(){
     return this.belongsTo(Stadium);
+  },
+  manager: function(){
+    return this.belongsTo(Manager);
   }
 });
 

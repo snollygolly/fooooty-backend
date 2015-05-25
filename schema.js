@@ -5,6 +5,12 @@ var Schema = {
       nullable: false,
       primary: true
     },
+    name: {
+      type: 'string',
+      maxlength: 255,
+      nullable: false,
+      comment: "Name of the bot"
+    }
     position_pref: {
       type: 'string',
       maxlength: 4,
@@ -35,6 +41,12 @@ var Schema = {
       type: 'increments',
       nullable: false,
       primary: true
+    },
+    manager_id: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "ID of the manager who runs this club"
     },
     stadium_id: {
       type: 'integer',
@@ -128,12 +140,6 @@ var Schema = {
       type: 'increments',
       nullable: false,
       primary: true
-    },
-    club_id: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "ID of the nation who owns this stadium"
     },
     name: {
       type: 'string',

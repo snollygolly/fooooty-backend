@@ -139,6 +139,40 @@ var Club = {
 			});
 	},
 
+	/* Hire a manager */
+	hireManager: function (req, res) {
+	  var clubId = req.params.id;
+	  var managerId = parseInt(req.params.mid);
+	  new Model.Club()
+	    .where('id', clubId)
+	    .fetch()
+	    .then(function (model) {
+	      model.set('manager_id', managerId);
+	      model.save();
+	      res.json(model);
+	    }).catch(function (error) {
+	      console.log(error);
+	      res.send('An error occured');
+	    });
+	},
+
+	/* Fire a leave */
+	fireManager: function (req, res) {
+	  var clubId = req.params.id;
+	  var managerId = parseInt(req.params.mid);
+	  new Model.Club()
+	    .where('id', clubId)
+	    .fetch()
+	    .then(function (model) {
+	      model.set('manager_id', null);
+	      model.save();
+	      res.json(model);
+	    }).catch(function (error) {
+	      console.log(error);
+	      res.send('An error occured');
+	    });
+	},
+
 	/* Create a club */
 	createClub: function (req, res) {
 		new Model.Club(Model.create())

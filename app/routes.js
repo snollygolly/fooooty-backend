@@ -9,6 +9,7 @@ var clubs = require('./routes/clubs');
 var nations = require('./routes/nations');
 var divisions = require('./routes/divisions');
 var stadiums = require('./routes/stadiums');
+var managers = require('./routes/managers');
 
 module.exports = function routes(app) {
 	app.get('/', index);
@@ -35,6 +36,8 @@ module.exports = function routes(app) {
 	app.delete('/api/v1/clubs/:id/divisions/:did', clubs.leaveDivision);
 	app.put('/api/v1/clubs/:id/stadiums/:sid', clubs.joinStadium);
 	app.delete('/api/v1/clubs/:id/stadiums/:sid', clubs.leaveStadium);
+	app.put('/api/v1/clubs/:id/managers/:mid', clubs.hireManager);
+	app.delete('/api/v1/clubs/:id/managers/:mid', clubs.fireManager);
 	//Creation Routes
 	app.post('/api/v1/clubs', clubs.createClub);
 
@@ -62,6 +65,13 @@ module.exports = function routes(app) {
 	app.delete('/api/v1/stadiums/:id/nations/:nid', stadiums.leaveNation);
 	//Creation Routes
 	app.post('/api/v1/stadiums', stadiums.createStadium);
+
+	//All "manager" routes
+	app.get('/api/v1/managers', managers.getAllManagers);
+	app.get('/api/v1/managers/:id', managers.getManager);
+	app.get('/api/v1/managers/:id/clubs', managers.getManagerWithClub);
+	//Creation Routes
+	app.post('/api/v1/managers', managers.createManager);
 
 	//Auth routes
 	app.post('/auth', auth);
