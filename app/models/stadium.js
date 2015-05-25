@@ -4,6 +4,7 @@ var bookshelf = require('../../config/db').bookshelf;
 var Club = require('./player').Club;
 var Nation = require('./division').Nation;
 var faker = require('faker');
+var utility = require('../helpers/utility');
 
 var Stadium = bookshelf.Model.extend({
   tableName: 'stadiums',
@@ -24,22 +25,18 @@ var create = function(){
   var headToCar = 8;
   var parkingPercentage = (1 / headToCar);
   //setting size for stadium
-  var stadiumSize = getRandomInt(minCapacity, maxCapacity) * 100;
+  var stadiumSize = utility.getRandomInt(minCapacity, maxCapacity) * 100;
   //setting name
   var companyName = faker.company.companyName();
-  var stadiumSuffix = stadiumTypes[getRandomInt(0, stadiumTypes.length - 1)];
+  var stadiumSuffix = utility.getRandomIndex(stadiumTypes);
   return {
     name: companyName + " " + stadiumSuffix,
-    media: getRandomInt(15, 90),
-    lighting: getRandomInt(35, 95),
-    grass: getRandomInt(50, 100),
+    media: utility.getRandomInt(15, 90),
+    lighting: utility.getRandomInt(35, 95),
+    grass: utility.getRandomInt(50, 100),
     capacity: stadiumSize,
     parking: Math.floor(stadiumSize * parkingPercentage)
   };
-}
-
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 module.exports = {

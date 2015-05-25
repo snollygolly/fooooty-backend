@@ -3,6 +3,7 @@
 var bookshelf = require('../../config/db').bookshelf;
 var Club = require('./club').Club;
 var faker = require('faker');
+var utility = require('../helpers/utility');
 
 var Player = bookshelf.Model.extend({
   tableName: 'players',
@@ -12,9 +13,11 @@ var Player = bookshelf.Model.extend({
 });
 
 var create = function(){
+  var positions = ["GK", "SW", "DF", "MF", "FW", "UT"];
   return {
     first_name: faker.name.firstName(),
-    last_name: faker.name.lastName()
+    last_name: faker.name.lastName(),
+    position: utility.getRandomIndex(positions)
   };
 }
 
