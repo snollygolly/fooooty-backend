@@ -1,15 +1,40 @@
 var Schema = {
-  clubs: {
+  bots: {
     id: {
       type: 'increments',
       nullable: false,
       primary: true
     },
-    manager_id: {
+    position_pref: {
+      type: 'string',
+      maxlength: 4,
+      nullable: false,
+      comment: "What position does this botmanager favor"
+    },
+    ost: {
       type: 'integer',
       nullable: false,
       unsigned: true,
-      comment: "ID of the manager who owns this club"
+      comment: "Percent of games this bot will play the Offside Trap"
+    },
+    sweeper: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "Percent of games this bot will play a sweeper"
+    },
+    hardness: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "Hardness level this bot plays at"
+    }
+  },
+  clubs: {
+    id: {
+      type: 'increments',
+      nullable: false,
+      primary: true
     },
     stadium_id: {
       type: 'integer',
@@ -34,6 +59,99 @@ var Schema = {
       maxlength: 255,
       nullable: false,
       comment: "Name of the club"
+    }
+  },
+  divisions: {
+    id: {
+      type: 'increments',
+      nullable: false,
+      primary: true
+    },
+    nation_id: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "ID of the nation this division belongs to"
+    },
+    name: {
+      type: 'string',
+      maxlength: 100,
+      nullable: false,
+      comment: "Full name of the division"
+    },
+    tier: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "Number of the tier this division is in"
+    },
+    depth: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "Depth within the tier of this division"
+    },
+    promotion_to: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "ID of the next division top teams from this division will be promoted to"
+    },
+    number_of_clubs: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "Number of clubs in this division"
+    },
+    regional_location: {
+      type: 'string',
+      maxlength: 13,
+      nullable: false,
+      comment: "Breakdown of exact geographical location within nation of this division"
+    }
+  },
+  groups: {
+    id: {
+      type: 'increments',
+      nullable: false,
+      primary: true
+    },
+    name: {
+      type: 'string',
+      maxlength: 100,
+      nullable: false,
+      comment: "Full name of the group"
+    }
+  },
+  managers: {
+    id: {
+      type: 'increments',
+      nullable: false,
+      primary: true
+    },
+    club_id: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "ID of the nation who owns this stadium"
+    },
+    name: {
+      type: 'string',
+      maxlength: 255,
+      nullable: false,
+      comment: "Name of this manager"
+    },
+    cpu: {
+      type: 'boolean',
+      nullable: false,
+      defaultTo: true,
+      comment: "If this manager is controlled by a CPU"
+    },
+    bot_id: {
+      type: 'integer',
+      nullable: true,
+      unsigned: true,
+      comment: "ID of the bot who runs this manager"
     }
   },
   nations: {
@@ -200,112 +318,6 @@ var Schema = {
       comment: "Current auction price for this player"
     }
   },
-  botmanagers: {
-    id: {
-      type: 'increments',
-      nullable: false,
-      primary: true
-    },
-    position_pref: {
-      type: 'string',
-      maxlength: 4,
-      nullable: false,
-      comment: "What position does this botmanager favor"
-    },
-    ost: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "Percent of games this bot will play the Offside Trap"
-    },
-    sweeper: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "Percent of games this bot will play a sweeper"
-    },
-    hardness: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "Hardness level this bot plays at"
-    }
-  },
-  divisions: {
-    id: {
-      type: 'increments',
-      nullable: false,
-      primary: true
-    },
-    nation_id: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "ID of the nation this division belongs to"
-    },
-    name: {
-      type: 'string',
-      maxlength: 100,
-      nullable: false,
-      comment: "Full name of the division"
-    },
-    tier: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "Number of the tier this division is in"
-    },
-    depth: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "Depth within the tier of this division"
-    },
-    promotion_to: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "ID of the next division top teams from this division will be promoted to"
-    },
-    number_of_clubs: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "Number of clubs in this division"
-    },
-    regional_location: {
-      type: 'string',
-      maxlength: 13,
-      nullable: false,
-      comment: "Breakdown of exact geographical location within nation of this division"
-    }
-  },
-  groups: {
-    id: {
-      type: 'increments',
-      nullable: false,
-      primary: true
-    },
-    name: {
-      type: 'string',
-      maxlength: 100,
-      nullable: false,
-      comment: "Full name of the group"
-    }
-  },
-  zones: {
-    id: {
-      type: 'increments',
-      nullable: false,
-      primary: true
-    },
-    name: {
-      type: 'string',
-      maxlength: 100,
-      nullable: false,
-      comment: "Full name of the zone"
-    }
-  },
   stadiums: {
     id: {
       type: 'increments',
@@ -430,6 +442,19 @@ var Schema = {
       type: 'dateTime',
       nullable: false,
       comment: "Date and time at which this user last accepted the cookie notice"
+    }
+  },
+  zones: {
+    id: {
+      type: 'increments',
+      nullable: false,
+      primary: true
+    },
+    name: {
+      type: 'string',
+      maxlength: 100,
+      nullable: false,
+      comment: "Full name of the zone"
     }
   }
 };
