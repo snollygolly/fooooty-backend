@@ -206,84 +206,29 @@ var Schema = {
       nullable: false,
       primary: true
     },
-    botmanager_id: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "ID of the manager who owns this club"
-    },
-    bot_position_pref: {
+    position_pref: {
       type: 'string',
       maxlength: 4,
       nullable: false,
       comment: "What position does this botmanager favor"
     },
-    bot_ost: {
+    ost: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "Percent of games this bot will play the Offside Trap"
     },
-    bot_sweeper: {
+    sweeper: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "Percent of games this bot will play a sweeper"
     },
-    bot_hardness: {
+    hardness: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "Hardness level this bot plays at"
-    }
-  },
-  defaults: {
-    id: {
-      type: 'increments',
-      nullable: false,
-      primary: true
-    },
-    default_zones: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "Number of zones when creating a new instance of the game"
-    },
-    default_groups: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "Number of groups when creating a new instance of the game"
-    },
-    default_speeds: {
-      type: 'string',
-      maxlength: 100,
-      nullable: false,
-      comment: "Default zone speeds in minutes"
-    },
-    default_tiernames: {
-      type: 'string',
-      maxlength: 100,
-      nullable: false,
-      comment: "Default names for tiers within a nation"
-    },
-    default_separators: {
-      type: 'string',
-      maxlength: 200,
-      nullable: false,
-      comment: "Default separator names for tiers within a nation"
-    },
-    images_path: {
-      type: 'string',
-      maxlength: 100,
-      nullable: false,
-      comment: "Path to image directory"
-    },
-    data_path: {
-      type: 'string',
-      maxlength: 100,
-      nullable: false,
-      comment: "Path to data directory"
     }
   },
   divisions: {
@@ -341,13 +286,7 @@ var Schema = {
       nullable: false,
       primary: true
     },
-    group_id: {
-      type: 'string',
-	  maxlength: 4,
-      nullable: false,
-      comment: "ID letter of the group"
-    },
-    group_name: {
+    name: {
       type: 'string',
       maxlength: 100,
       nullable: false,
@@ -360,13 +299,7 @@ var Schema = {
       nullable: false,
       primary: true
     },
-    zone_id: {
-      type: 'integer',
-      nullable: false,
-      unsigned: true,
-      comment: "ID of the zone left to right slow to quick"
-    },
-    zone_name: {
+    name: {
       type: 'string',
       maxlength: 100,
       nullable: false,
@@ -440,54 +373,54 @@ var Schema = {
       nullable: false,
       comment: "Display name of this user"
     },
-    user_email: {
+    email: {
       type: 'string',
       maxlength: 100,
       nullable: false,
       comment: "Email address of this user"
     },
-    user_password_hash: {
+    password_hash: {
       type: 'string',
       maxlength: 64,
       nullable: false,
       comment: "Hash value of password of this user"
     },
-    user_realname: {
+    realname: {
       type: 'string',
       maxlength: 100,
       nullable: false,
       comment: "Real name of this user"
     },
-    user_bio: {
+    bio: {
       type: 'string',
       maxlength: 1000,
       nullable: false,
       comment: "Public bio text input by this user"
     },
-    user_status: {
+    status: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "Whether user is active dormant manager director or chairman"
     },
-    user_credits: {
+    credits: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "Number of credits in this users account"
     },
-    user_revert: {
+    revert: {
       type: 'dateTime',
       nullable: false,
       comment: "Date and time at which this user account reverts back to manager from purchased director or chairman"
     },
-    user_visas: {
+    visas: {
       type: 'integer',
       nullable: false,
       unsigned: true,
       comment: "Number of travel visas in this users account"
     },
-    user_cookie_accept: {
+    cookie_accept: {
       type: 'dateTime',
       nullable: false,
       comment: "Date and time at which this user last accepted the cookie notice"
