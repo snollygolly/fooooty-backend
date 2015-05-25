@@ -367,6 +367,12 @@ var Schema = {
       nullable: false,
       primary: true
     },
+    manager_id: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "The ID of the manager associated with this user"
+    },
     username: {
       type: 'string',
       maxlength: 24,
