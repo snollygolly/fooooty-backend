@@ -1,13 +1,27 @@
-var knex = require('knex')({
-  client: 'mysql',
-  connection: {
-    host     : '127.0.0.1',
-    user     : 'root',
-    password : 'root',
-    database : 'football',
-    charset  : 'utf8'
-  }
-});
+if (process.env.NODE_ENV == "production"){
+  var knex = require('knex')({
+    client: 'mysql',
+    connection: {
+      host     : '127.0.0.1',
+      user     : 'root',
+      password : 'kCRipSLVG0',
+      database : 'football',
+      charset  : 'utf8'
+    }
+  });
+} else {
+  var knex = require('knex')({
+    client: 'mysql',
+    connection: {
+      host     : '127.0.0.1',
+      user     : 'root',
+      password : 'root',
+      database : 'football',
+      charset  : 'utf8'
+    }
+  });
+}
+
 var Schema = require('./schema');
 var sequence = require('when/sequence');
 var _ = require('lodash');

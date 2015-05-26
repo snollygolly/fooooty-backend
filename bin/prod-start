@@ -1,0 +1,1 @@
+NODE_ENV=production PORT=4000 ./node_modules/.bin/supervisor server.js | ./node_modules/.bin/bunyan -o short --level info
