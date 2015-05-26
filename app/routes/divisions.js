@@ -1,6 +1,6 @@
 'use strict';
 
-var Model = require('./../models/Division');
+var Model = require('./../models/division');
 
 var Division = {
 	/* Get all divisions */

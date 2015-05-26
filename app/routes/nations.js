@@ -1,6 +1,6 @@
 'use strict';
 
-var Model = require('./../models/Nation');
+var Model = require('./../models/nation');
 
 var Nation = {
 	/* Get all nations */

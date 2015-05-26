@@ -1,6 +1,6 @@
 'use strict';
 
-var Model = require('./../models/Bot');
+var Model = require('./../models/bot');
 
 var Bot = {
 	/* Get all bots */

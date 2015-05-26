@@ -1,6 +1,6 @@
 'use strict';
 
-var Model = require('./../models/Manager');
+var Model = require('./../models/manager');
 
 var Manager = {
 	/* Get all managers */

@@ -1,6 +1,6 @@
 'use strict';
 
-var Model = require('./../models/Stadium');
+var Model = require('./../models/stadium');
 
 var Stadium = {
 	/* Get all stadiums */
