@@ -122,6 +122,68 @@ var Schema = {
       comment: "Breakdown of exact geographical location within nation of this division"
     }
   },
+  games: {
+    id: {
+      type: 'increments',
+      nullable: false,
+      primary: true
+    },
+    status: {
+      type: 'string',
+      maxlength: 100,
+      nullable: false,
+      comment: "Plaintext status of the game"
+    },
+    home_club_id: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "ID of the home club"
+    },
+    away_club_id: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "ID of the away club"
+    },
+    start_date: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "The in game day this game should be played"
+    },
+    home_score: {
+      type: 'integer',
+      defaultTo: 0,
+      nullable: false,
+      unsigned: true,
+      comment: "Score of the home club"
+    },
+    away_score: {
+      type: 'integer',
+      defaultTo: 0,
+      nullable: false,
+      unsigned: true,
+      comment: "Score of the away club"
+    },
+    winner_club_id: {
+      type: 'integer',
+      nullable: true,
+      unsigned: true,
+      comment: "The ID of the club that won"
+    },
+    loser_club_id: {
+      type: 'integer',
+      nullable: true,
+      unsigned: true,
+      comment: "The ID of the club that lost"
+    },
+    game: {
+      type: 'text',
+      nullable: true,
+      comment: "JSON encoded recap of the game"
+    }
+  },
   groups: {
     id: {
       type: 'increments',
