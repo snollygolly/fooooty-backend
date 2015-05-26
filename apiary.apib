@@ -14,8 +14,8 @@ Gets all the players currently in the `players` table.
 
 + Response 200 (application/json)
 
-        [  
-           {  
+        [
+           {
               "id":1,
               "club_id":null,
               "nation_id":0,
@@ -34,7 +34,7 @@ Gets all the players currently in the `players` table.
               "auction_type":0,
               "auction_price":0
            },
-           {  
+           {
               "id":2,
               "club_id":null,
               "nation_id":0,
@@ -54,32 +54,102 @@ Gets all the players currently in the `players` table.
               "auction_price":0
            },
            {
-            "id": 3,
-            "club_id": null,
-            "nation_id": 0,
-            "first_name": "Clifton",
-            "last_name": "Kuhic",
-            "suffix": "",
-            "age": 0,
-            "starting": 0,
-            "level": 0,
-            "super_skill": 0,
-            "position": "FW",
-            "oop": 0,
-            "dp": 0,
-            "suspended": 0,
-            "health": 100,
-            "auction_type": 0,
-            "auction_price": 0
+              "id": 3,
+              "club_id": 1,
+              "nation_id": 0,
+              "first_name": "Clifton",
+              "last_name": "Kuhic",
+              "suffix": "",
+              "age": 0,
+              "starting": 0,
+              "level": 0,
+              "super_skill": 0,
+              "position": "FW",
+              "oop": 0,
+              "dp": 0,
+              "suspended": 0,
+              "health": 100,
+              "auction_type": 0,
+              "auction_price": 0
             }
         ]
-        
+
 ## Unsigned Player Listing [/players/available]
 
 ### getAllUnsignedPlayers [GET]
-Gets an array of all unsigned players (limit of 10)
+Gets an array of all unsigned players (limit of 10).
 
 + Response 200 (application/json)
 
+        [
+           {
+              "id":1,
+              "club_id":null,
+              "nation_id":0,
+              "first_name":"Autumn",
+              "last_name":"Hand",
+              "suffix":"",
+              "age":0,
+              "starting":0,
+              "level":0,
+              "super_skill":0,
+              "position":"UT",
+              "oop":0,
+              "dp":0,
+              "suspended":0,
+              "health":100,
+              "auction_type":0,
+              "auction_price":0
+           },
+           {
+              "id":2,
+              "club_id":null,
+              "nation_id":0,
+              "first_name":"Gabriella",
+              "last_name":"Mohr",
+              "suffix":"",
+              "age":0,
+              "starting":0,
+              "level":0,
+              "super_skill":0,
+              "position":"FW",
+              "oop":0,
+              "dp":0,
+              "suspended":0,
+              "health":100,
+              "auction_type":0,
+              "auction_price":0
+           }
+        ]
 
-     
+## Unsigned Player Listing (For Specific Position) [/players/available/{position}]
+
++ Parameters
+    + position (required, string, 'FW') ... Which position do you want to search for
+
+### getAllUnsignedPlayersFromPosition [GET]
+Gets an array of all unsigned players that play a specific position (limit of 10).
+
++ Response 200 (application/json)
+
+        [
+          {
+             "id":2,
+             "club_id":null,
+             "nation_id":0,
+             "first_name":"Gabriella",
+             "last_name":"Mohr",
+             "suffix":"",
+             "age":0,
+             "starting":0,
+             "level":0,
+             "super_skill":0,
+             "position":"FW",
+             "oop":0,
+             "dp":0,
+             "suspended":0,
+             "health":100,
+             "auction_type":0,
+             "auction_price":0
+          }
+        ]
