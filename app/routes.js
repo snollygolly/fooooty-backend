@@ -71,6 +71,8 @@ module.exports = function routes(app) {
 	app.get('/api/v1/managers', managers.getAllManagers);
 	app.get('/api/v1/managers/:id', managers.getManager);
 	app.get('/api/v1/managers/:id/clubs', managers.getManagerWithClub);
+	app.put('/api/v1/managers/:id/bots/:nid', managers.addBot);
+	app.delete('/api/v1/managers/:id/bots/:nid', managers.removeBot);
 	//Creation Routes
 	app.post('/api/v1/managers', managers.createManager);
 
