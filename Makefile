@@ -23,6 +23,24 @@ seed:
 	curl -X POST http://127.0.0.1:4000/api/v1/clubs -H "Authorization: Bearer $(TOKEN)" && \
 	curl -X POST http://127.0.0.1:4000/api/v1/clubs -H "Authorization: Bearer $(TOKEN)" \
 
+	curl -X POST http://127.0.0.1:4000/api/v1/managers -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/managers -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/managers -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/managers -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/managers -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/managers -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/managers -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/managers -H "Authorization: Bearer $(TOKEN)" \
+
+	curl -X POST http://127.0.0.1:4000/api/v1/bots -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/bots -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/bots -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/bots -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/bots -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/bots -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/bots -H "Authorization: Bearer $(TOKEN)" && \
+	curl -X POST http://127.0.0.1:4000/api/v1/bots -H "Authorization: Bearer $(TOKEN)" \
+
 	curl -X POST http://127.0.0.1:4000/api/v1/players -H "Authorization: Bearer $(TOKEN)" && \
 	curl -X POST http://127.0.0.1:4000/api/v1/players -H "Authorization: Bearer $(TOKEN)" && \
 	curl -X POST http://127.0.0.1:4000/api/v1/players -H "Authorization: Bearer $(TOKEN)" && \
