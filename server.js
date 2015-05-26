@@ -24,10 +24,17 @@ app.use(
 	jwt({ secret: config.JWT_SECRET })
 	.unless({
 		path: [
+			'/',
 			'/auth'
 		]
 	})
 );
+
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+		res.status(401).send({error: 'Please authenticate first mate'})
+  }
+});
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
