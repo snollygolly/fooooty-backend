@@ -73,6 +73,24 @@ var Schema = {
       comment: "Name of the club"
     }
   },
+  days: {
+    id: {
+      type: 'increments',
+      nullable: false,
+      primary: true
+    },
+    day: {
+      type: 'integer',
+      nullable: false,
+      unsigned: true,
+      comment: "The friendly number of the current day"
+    },
+    started: {
+      type: 'dateTime',
+      nullable: false,
+      comment: "The date this in game day started"
+    }
+  },
   divisions: {
     id: {
       type: 'increments',
@@ -130,6 +148,7 @@ var Schema = {
     },
     status: {
       type: 'string',
+      defaultTo: "NEW",
       maxlength: 100,
       nullable: false,
       comment: "Plaintext status of the game"
@@ -146,7 +165,7 @@ var Schema = {
       unsigned: true,
       comment: "ID of the away club"
     },
-    start_date: {
+    day_id: {
       type: 'integer',
       nullable: false,
       unsigned: true,
