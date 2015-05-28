@@ -1,155 +1,224 @@
 FORMAT: 1A
-HOST: http://127.0.0.1:4000/api/v1/
 
 # Fooooty API
 The **Fooooty API** is the heart and soul of **Fooooty**.  The API controls everything anyone can do in the game.
 
-# Group Players
-Group of all player related resources
+# Group Main
 
-## All Players [/players]
+## Authenticate [/auth]
+
+### auth [POST]
+Gets a web token for use in future calls
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+  + Body
+
+            {
+              "token": "XXX"
+            }
+
+  + Schema
+
+            {
+                "type": "object",
+                "required": true,
+                "properties": {
+                    "token": {
+                        "type": ["string"],
+                        "required": true
+                    }
+                }
+            }
+
+# Group Players
+
+## All Players [/api/v1/players]
 
 ### getAllPlayers [GET]
 Gets all the players currently in the `players` table.
 
-+ Response 200 (application/json)
++ Request
 
-        [
-           {
-              "id":1,
-              "club_id":null,
-              "nation_id":0,
-              "first_name":"Autumn",
-              "last_name":"Hand",
-              "suffix":"",
-              "age":0,
-              "starting":0,
-              "level":0,
-              "super_skill":0,
-              "position":"UT",
-              "oop":0,
-              "dp":0,
-              "suspended":0,
-              "health":100,
-              "auction_type":0,
-              "auction_price":0
-           },
-           {
-              "id":2,
-              "club_id":null,
-              "nation_id":0,
-              "first_name":"Gabriella",
-              "last_name":"Mohr",
-              "suffix":"",
-              "age":0,
-              "starting":0,
-              "level":0,
-              "super_skill":0,
-              "position":"FW",
-              "oop":0,
-              "dp":0,
-              "suspended":0,
-              "health":100,
-              "auction_type":0,
-              "auction_price":0
-           },
-           {
-              "id": 3,
-              "club_id": 1,
-              "nation_id": 0,
-              "first_name": "Clifton",
-              "last_name": "Kuhic",
-              "suffix": "",
-              "age": 0,
-              "starting": 0,
-              "level": 0,
-              "super_skill": 0,
-              "position": "FW",
-              "oop": 0,
-              "dp": 0,
-              "suspended": 0,
-              "health": 100,
-              "auction_type": 0,
-              "auction_price": 0
-            }
-        ]
+  + Headers
 
-## Unsigned Player Listing [/players/available]
+            Content-Type: application/json
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidXNlciIsImlhdCI6MTQzMTQ4MjAyNX0.QKx_zWPe0yMu-61_4HQfdLioozBhrtxfGTtMGGxTGQA
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+  + Body
+
+            [
+               {
+                  "id":1,
+                  "club_id":null,
+                  "nation_id":0,
+                  "first_name":"Autumn",
+                  "last_name":"Hand",
+                  "suffix":"",
+                  "age":0,
+                  "starting":0,
+                  "level":0,
+                  "super_skill":0,
+                  "position":"UT",
+                  "oop":0,
+                  "dp":0,
+                  "suspended":0,
+                  "health":100,
+                  "auction_type":0,
+                  "auction_price":0
+               },
+               {
+                  "id":2,
+                  "club_id":null,
+                  "nation_id":0,
+                  "first_name":"Gabriella",
+                  "last_name":"Mohr",
+                  "suffix":"",
+                  "age":0,
+                  "starting":0,
+                  "level":0,
+                  "super_skill":0,
+                  "position":"FW",
+                  "oop":0,
+                  "dp":0,
+                  "suspended":0,
+                  "health":100,
+                  "auction_type":0,
+                  "auction_price":0
+               },
+               {
+                  "id": 3,
+                  "club_id": 1,
+                  "nation_id": 0,
+                  "first_name": "Clifton",
+                  "last_name": "Kuhic",
+                  "suffix": "",
+                  "age": 0,
+                  "starting": 0,
+                  "level": 0,
+                  "super_skill": 0,
+                  "position": "FW",
+                  "oop": 0,
+                  "dp": 0,
+                  "suspended": 0,
+                  "health": 100,
+                  "auction_type": 0,
+                  "auction_price": 0
+                }
+            ]
+
+## Unsigned Player Listing [/api/v1/players/available]
 
 ### getAllUnsignedPlayers [GET]
 Gets an array of all unsigned players (limit of 10).
 
-+ Response 200 (application/json)
++ Request
 
-        [
-           {
-              "id":1,
-              "club_id":null,
-              "nation_id":0,
-              "first_name":"Autumn",
-              "last_name":"Hand",
-              "suffix":"",
-              "age":0,
-              "starting":0,
-              "level":0,
-              "super_skill":0,
-              "position":"UT",
-              "oop":0,
-              "dp":0,
-              "suspended":0,
-              "health":100,
-              "auction_type":0,
-              "auction_price":0
-           },
-           {
-              "id":2,
-              "club_id":null,
-              "nation_id":0,
-              "first_name":"Gabriella",
-              "last_name":"Mohr",
-              "suffix":"",
-              "age":0,
-              "starting":0,
-              "level":0,
-              "super_skill":0,
-              "position":"FW",
-              "oop":0,
-              "dp":0,
-              "suspended":0,
-              "health":100,
-              "auction_type":0,
-              "auction_price":0
-           }
-        ]
+  + Headers
 
-## Unsigned Player Listing (For Specific Position) [/players/available/{position}]
+            Content-Type: application/json
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidXNlciIsImlhdCI6MTQzMTQ4MjAyNX0.QKx_zWPe0yMu-61_4HQfdLioozBhrtxfGTtMGGxTGQA
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+  + Body
+
+            [
+               {
+                  "id":1,
+                  "club_id":null,
+                  "nation_id":0,
+                  "first_name":"Autumn",
+                  "last_name":"Hand",
+                  "suffix":"",
+                  "age":0,
+                  "starting":0,
+                  "level":0,
+                  "super_skill":0,
+                  "position":"UT",
+                  "oop":0,
+                  "dp":0,
+                  "suspended":0,
+                  "health":100,
+                  "auction_type":0,
+                  "auction_price":0
+               },
+               {
+                  "id":2,
+                  "club_id":null,
+                  "nation_id":0,
+                  "first_name":"Gabriella",
+                  "last_name":"Mohr",
+                  "suffix":"",
+                  "age":0,
+                  "starting":0,
+                  "level":0,
+                  "super_skill":0,
+                  "position":"FW",
+                  "oop":0,
+                  "dp":0,
+                  "suspended":0,
+                  "health":100,
+                  "auction_type":0,
+                  "auction_price":0
+               }
+            ]
+
+## Unsigned Player Listing By Position [/api/v1/players/available/{position}]
 
 + Parameters
-    + position (required, string, 'FW') ... Which position do you want to search for
+    + position (required, string, `FW`) ... Which position do you want to search for
 
 ### getAllUnsignedPlayersFromPosition [GET]
 Gets an array of all unsigned players that play a specific position (limit of 10).
 
-+ Response 200 (application/json)
++ Request
 
-        [
-          {
-             "id":2,
-             "club_id":null,
-             "nation_id":0,
-             "first_name":"Gabriella",
-             "last_name":"Mohr",
-             "suffix":"",
-             "age":0,
-             "starting":0,
-             "level":0,
-             "super_skill":0,
-             "position":"FW",
-             "oop":0,
-             "dp":0,
-             "suspended":0,
-             "health":100,
-             "auction_type":0,
-             "auction_price":0
-          }
-        ]
+  + Headers
+
+            Content-Type: application/json
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidXNlciIsImlhdCI6MTQzMTQ4MjAyNX0.QKx_zWPe0yMu-61_4HQfdLioozBhrtxfGTtMGGxTGQA
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+  + Body
+
+            [
+              {
+                 "id":2,
+                 "club_id":null,
+                 "nation_id":0,
+                 "first_name":"Gabriella",
+                 "last_name":"Mohr",
+                 "suffix":"",
+                 "age":0,
+                 "starting":0,
+                 "level":0,
+                 "super_skill":0,
+                 "position":"FW",
+                 "oop":0,
+                 "dp":0,
+                 "suspended":0,
+                 "health":100,
+                 "auction_type":0,
+                 "auction_price":0
+              }
+            ]

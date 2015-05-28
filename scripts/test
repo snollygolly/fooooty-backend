@@ -1,0 +1,8 @@
+#!/bin/sh
+node server.js &
+sleep 3
+PID=$!
+dredd apiary.apib http://localhost:4000/
+RESULT=$?
+kill -9 $PID
+exit $RESULT
