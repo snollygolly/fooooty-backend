@@ -297,7 +297,7 @@ Gets full information about a specific player
 + Parameters
     + id (required, integer, `1`) ... The ID of the player you want
 
-### getPlayer [GET]
+### getPlayerWithClub [GET]
 Gets full information about a specific player along with the associated club information (if available)
 
 + Request
@@ -399,10 +399,6 @@ Joins a player to a specific club
               "auction_type": 0,
               "auction_price": 0
             }
-
-+ Parameters
-    + id (required, integer, `1`) ... The ID of the player you want
-    + club_id (required, integer, `1`) ... The ID of the club you want to leave
 
 ### leaveClub [DELETE]
 Leaves a specific club as a player
