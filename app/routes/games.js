@@ -1,6 +1,7 @@
 'use strict';
 
 var Model = require('./../models/game');
+var utility = require('../helpers/utility');
 
 var Game = {
 	/* Get all games */
@@ -82,13 +83,18 @@ var Game = {
 	},
 
 	/* Kickoff a game simulation */
-	simulateGame: function (req, res) {
+	kickoffGame: function (req, res) {
 		var gameId = req.params.id;
 		new Model.Game()
 			.where('id', gameId)
 			.fetch()
 			.then(function (model) {
-				model.set('away_club_id', clubId);
+				model = simulateGame(model);
+				// model.set('home_score', model.home_score);
+				// model.set('away_score', model.away_score);
+				// model.set('winner_club_id', model.winner_club_id);
+				// model.set('loser_club_id', model.loser_club_id);
+				// model.set('status', model.status);
 				model.save();
 				res.json(model);
 			}).catch(function (error) {
@@ -110,12 +116,30 @@ var Game = {
 	}
 };
 
-function
+function simulateGame(game){
+	if (utility.getRandomInt(1,2) === 1){
+		//home wins
+		game.set('home_score', 1);
+		game.set('away_score', 0);
+		game.set('winner_club_id', game.get('home_club_id'));
+		game.set('loser_club_id', game.get('away_club_id'));
+	}else{
+		//away wins
+		game.set('home_score', 0);
+		game.set('away_score', 1);
+		game.set('winner_club_id', game.get('away_club_id'));
+		game.set('loser_club_id', game.get('home_club_id'));
+	}
+	game.set('status', "ENDED");
+	game.set('game', generateGameJSON(game));
+	return game;
+}
 
 function generateGameJSON(game){
 	var returnObj = {};
 	returnObj.recap = [];
 	returnObj.recap.push("Game has been simulated!");
+	return JSON.stringify(returnObj);
 }
 
 

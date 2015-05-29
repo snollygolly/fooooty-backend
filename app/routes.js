@@ -88,6 +88,10 @@ module.exports = function routes(app) {
 	//All "game" routes
 	app.get('/api/v1/games', games.getAllGames);
 	app.get('/api/v1/games/:id', games.getGame);
+	app.put('/api/v1/games/:id/clubs/:cid/home', games.joinGameAsHomeClub);
+	app.put('/api/v1/games/:id/clubs/:cid/away', games.joinGameAsAwayClub);
+	app.put('/api/v1/games/:id/days/:did/schedule', games.scheduleGameForDay);
+	app.post('/api/v1/games/:id/kickoff', games.kickoffGame);
 	//Creation Routes
 	app.post('/api/v1/games', games.createGame);
 
