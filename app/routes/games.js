@@ -29,6 +29,57 @@ var Game = {
 			});
 	},
 
+	/* Join home club */
+	joinGameAsHomeClub: function (req, res) {
+		var gameId = req.params.id;
+		var clubId = parseInt(req.params.cid);
+		new Model.Division()
+			.where('id', gameId)
+			.fetch()
+			.then(function (model) {
+				model.set('home_club_id', clubId);
+				model.save();
+				res.json(model);
+			}).catch(function (error) {
+				console.log(error);
+				res.send('An error occured');
+			});
+	}
+
+	/* Join away club */
+	joinGameAsAwayClub: function (req, res) {
+		var gameId = req.params.id;
+		var clubId = parseInt(req.params.cid);
+		new Model.Division()
+			.where('id', gameId)
+			.fetch()
+			.then(function (model) {
+				model.set('away_club_id', clubId);
+				model.save();
+				res.json(model);
+			}).catch(function (error) {
+				console.log(error);
+				res.send('An error occured');
+			});
+	}
+
+	/* Schedule a game for a day */
+	scheduleGameForDay: function (req, res) {
+		var gameId = req.params.id;
+		var dayId = parseInt(req.params.did);
+		new Model.Division()
+			.where('id', gameId)
+			.fetch()
+			.then(function (model) {
+				model.set('day_id', dayId);
+				model.save();
+				res.json(model);
+			}).catch(function (error) {
+				console.log(error);
+				res.send('An error occured');
+			});
+	}
+
 	/* Create a game */
 	createGame: function (req, res) {
 		new Model.Game(Model.create())
