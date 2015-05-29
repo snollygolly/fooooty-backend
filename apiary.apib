@@ -37,7 +37,7 @@ Gets a web token for use in future calls
 
 # Group Players
 
-## All Players [/api/v1/players]
+## Player Basics [/api/v1/players]
 
 ### getAllPlayers [GET]
 Gets all the players currently in the `players` table.
@@ -116,6 +116,32 @@ Gets all the players currently in the `players` table.
                   "auction_price": 0
                 }
             ]
+
+### createPlayer [POST]
+Creates a brand new player
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidXNlciIsImlhdCI6MTQzMTQ4MjAyNX0.QKx_zWPe0yMu-61_4HQfdLioozBhrtxfGTtMGGxTGQA
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+  + Body
+
+            {
+              "first_name": "Angelita",
+              "last_name": "Crona",
+              "position": "GK",
+              "health": 100,
+              "id": 33
+            }
 
 ## Unsigned Player Listing [/api/v1/players/available]
 
@@ -222,3 +248,282 @@ Gets an array of all unsigned players that play a specific position (limit of 10
                  "auction_price":0
               }
             ]
+
+## Get Player [/api/v1/players/{id}]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the player you want
+
+### getPlayer [GET]
+Gets full information about a specific player
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidXNlciIsImlhdCI6MTQzMTQ4MjAyNX0.QKx_zWPe0yMu-61_4HQfdLioozBhrtxfGTtMGGxTGQA
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+  + Body
+
+            {
+               "id":1,
+               "club_id":null,
+               "nation_id":0,
+               "first_name":"Autumn",
+               "last_name":"Hand",
+               "suffix":"",
+               "age":0,
+               "starting":0,
+               "level":0,
+               "super_skill":0,
+               "position":"UT",
+               "oop":0,
+               "dp":0,
+               "suspended":0,
+               "health":100,
+               "auction_type":0,
+               "auction_price":0
+            }
+
+## Get Player With Club [/api/v1/players/{id}/clubs]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the player you want
+
+### getPlayer [GET]
+Gets full information about a specific player along with the associated club information (if available)
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidXNlciIsImlhdCI6MTQzMTQ4MjAyNX0.QKx_zWPe0yMu-61_4HQfdLioozBhrtxfGTtMGGxTGQA
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+  + Body
+
+            {
+              "id": 1,
+              "club_id": 1,
+              "nation_id": 0,
+              "first_name": "Katlynn",
+              "last_name": "Schimmel",
+              "suffix": "",
+              "age": 0,
+              "starting": 0,
+              "level": 0,
+              "super_skill": 0,
+              "position": "SW",
+              "oop": 0,
+              "dp": 0,
+              "suspended": 0,
+              "health": 100,
+              "auction_type": 0,
+              "auction_price": 0,
+              "club":{
+                "id": 1,
+                "manager_id": 0,
+                "stadium_id": 0,
+                "division_id": 0,
+                "divisional_position": 0,
+                "name": "Cole-Schowalter"
+              }
+            }
+
+  + Schema
+
+            {
+                "type": "object",
+                "required": true,
+                "properties": {
+                    "club": {
+                        "type": ["object"],
+                        "required": false
+                    }
+                }
+            }
+
+## Club Membership [/api/v1/players/{id}/clubs/{club_id}]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the player you want
+    + club_id (required, integer, `1`) ... The ID of the club you want to join
+
+### joinClub [PUT]
+Joins a player to a specific club
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidXNlciIsImlhdCI6MTQzMTQ4MjAyNX0.QKx_zWPe0yMu-61_4HQfdLioozBhrtxfGTtMGGxTGQA
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+  + Body
+
+            {
+              "id": 1,
+              "club_id": 1,
+              "nation_id": 0,
+              "first_name": "Katlynn",
+              "last_name": "Schimmel",
+              "suffix": "",
+              "age": 0,
+              "starting": 0,
+              "level": 0,
+              "super_skill": 0,
+              "position": "SW",
+              "oop": 0,
+              "dp": 0,
+              "suspended": 0,
+              "health": 100,
+              "auction_type": 0,
+              "auction_price": 0
+            }
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the player you want
+    + club_id (required, integer, `1`) ... The ID of the club you want to leave
+
+### leaveClub [DELETE]
+Leaves a specific club as a player
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidXNlciIsImlhdCI6MTQzMTQ4MjAyNX0.QKx_zWPe0yMu-61_4HQfdLioozBhrtxfGTtMGGxTGQA
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+  + Body
+
+            {
+              "id": 1,
+              "club_id": null,
+              "nation_id": 0,
+              "first_name": "Katlynn",
+              "last_name": "Schimmel",
+              "suffix": "",
+              "age": 0,
+              "starting": 0,
+              "level": 0,
+              "super_skill": 0,
+              "position": "SW",
+              "oop": 0,
+              "dp": 0,
+              "suspended": 0,
+              "health": 100,
+              "auction_type": 0,
+              "auction_price": 0
+            }
+
+## Start Player [/api/v1/players/{id}/start]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the player you want
+
+### startPlayer [PUT]
+Changes a player to starting, meaning they wil play in the game
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidXNlciIsImlhdCI6MTQzMTQ4MjAyNX0.QKx_zWPe0yMu-61_4HQfdLioozBhrtxfGTtMGGxTGQA
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+  + Body
+
+            {
+              "id": 1,
+              "club_id": 1,
+              "nation_id": 0,
+              "first_name": "Katlynn",
+              "last_name": "Schimmel",
+              "suffix": "",
+              "age": 0,
+              "starting": 1,
+              "level": 0,
+              "super_skill": 0,
+              "position": "SW",
+              "oop": 0,
+              "dp": 0,
+              "suspended": 0,
+              "health": 100,
+              "auction_type": 0,
+              "auction_price": 0
+            }
+
+## Bench Player [/api/v1/players/{id}/bench]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the player you want
+
+### benchPlayer [PUT]
+Benches a specific player to make them not start in the game
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidXNlciIsImlhdCI6MTQzMTQ4MjAyNX0.QKx_zWPe0yMu-61_4HQfdLioozBhrtxfGTtMGGxTGQA
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+  + Body
+
+            {
+              "id": 1,
+              "club_id": null,
+              "nation_id": 0,
+              "first_name": "Katlynn",
+              "last_name": "Schimmel",
+              "suffix": "",
+              "age": 0,
+              "starting": 0,
+              "level": 0,
+              "super_skill": 0,
+              "position": "SW",
+              "oop": 0,
+              "dp": 0,
+              "suspended": 0,
+              "health": 100,
+              "auction_type": 0,
+              "auction_price": 0
+            }
