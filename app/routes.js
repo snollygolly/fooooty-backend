@@ -12,6 +12,7 @@ var stadiums = require('./routes/stadiums');
 var managers = require('./routes/managers');
 var bots = require('./routes/bots');
 var games = require('./routes/games');
+var days = require('./routes/days');
 
 module.exports = function routes(app) {
 	app.get('/', index);
@@ -89,6 +90,12 @@ module.exports = function routes(app) {
 	app.get('/api/v1/games/:id', games.getGame);
 	//Creation Routes
 	app.post('/api/v1/games', games.createGame);
+
+	//All "day" routes
+	app.get('/api/v1/days', days.getAllDays);
+	app.get('/api/v1/days/:id', days.getDay);
+	//Creation Routes
+	app.post('/api/v1/days', days.createDay);
 
 	//Auth routes
 	app.post('/auth', auth);

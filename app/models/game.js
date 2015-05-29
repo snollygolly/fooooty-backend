@@ -3,6 +3,7 @@
 var bookshelf = require('../../config/db').bookshelf;
 var faker = require('faker');
 var Club = require('./club').Club;
+var Day = require('./club').Day;
 var utility = require('../helpers/utility');
 
 
@@ -19,6 +20,9 @@ var Game = bookshelf.Model.extend({
   },
   loser_club: function(){
     return this.belongsTo(Club, 'loser_club_id');
+  },
+  started: function(){
+    return this.belongsTo(Day);
   }
 });
 
