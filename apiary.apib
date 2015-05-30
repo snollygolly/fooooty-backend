@@ -607,11 +607,11 @@ Get of list of all the players who are not marked as starting for this club
             Content-Type: application/json
 
 
-## Join Division [/api/v1/clubs/{id}/divisions/{division_id}]
+## Division Membership [/api/v1/clubs/{id}/divisions/{division_id}]
 
 + Parameters
     + id (required, integer, `1`) ... The ID of the club you want
-    + division_id (required, integer, `1`) ... The ID of the division you want to join
+    + division_id (required, integer, `1`) ... The ID of the division
 
 ### joinDivision [GET]
 Join the division with the club specified
@@ -621,13 +621,6 @@ Join the division with the club specified
   + Headers
 
             Content-Type: application/json
-
-
-## Leave Division [/api/v1/clubs/{id}/divisions/{division_id}]
-
-+ Parameters
-    + id (required, integer, `1`) ... The ID of the club you want
-    + division_id (required, integer, `1`) ... The ID of the division you want to leave
 
 ### leaveDivision [DELETE]
 Leave the division with the club specified
@@ -639,11 +632,11 @@ Leave the division with the club specified
             Content-Type: application/json
 
 
-## Join Stadium [/api/v1/clubs/{id}/stadiums/{stadium_id}]
+## Stadium Membership [/api/v1/clubs/{id}/stadiums/{stadium_id}]
 
 + Parameters
     + id (required, integer, `1`) ... The ID of the club you want
-    + stadium_id (required, integer, `1`) ... The ID of the stadium you want to join
+    + stadium_id (required, integer, `1`) ... The ID of the stadium
 
 ### joinStadium [GET]
 Join the stadium with the club specified
@@ -653,13 +646,6 @@ Join the stadium with the club specified
   + Headers
 
             Content-Type: application/json
-
-
-## Leave Stadium [/api/v1/clubs/{id}/stadiums/{stadium_id}]
-
-+ Parameters
-    + id (required, integer, `1`) ... The ID of the club you want
-    + stadium_id (required, integer, `1`) ... The ID of the stadium you want to leave
 
 ### leaveStadium [DELETE]
 Leave the stadium with the club specified
@@ -671,7 +657,7 @@ Leave the stadium with the club specified
             Content-Type: application/json
 
 
-## Hire Manager [/api/v1/clubs/{id}/managers/{manager_id}]
+## Manager Membership [/api/v1/clubs/{id}/managers/{manager_id}]
 
 + Parameters
     + id (required, integer, `1`) ... The ID of the club you want
@@ -685,13 +671,6 @@ Hire the manager specified to the club
   + Headers
 
             Content-Type: application/json
-
-
-## Leave Manager [/api/v1/clubs/{id}/managers/{manager_id}]
-
-+ Parameters
-    + id (required, integer, `1`) ... The ID of the club you want
-    + manager_id (required, integer, `1`) ... The ID of the manager you want to hire
 
 ### fireManager [DELETE]
 Fire the manager specified from the club
