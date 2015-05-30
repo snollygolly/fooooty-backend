@@ -680,3 +680,81 @@ Fire the manager specified from the club
   + Headers
 
             Content-Type: application/json
+
+
+# Group Divisions
+
+## Division Basics [/api/v1/divisions]
+
+### getAllDivisions [GET]
+Gets a list of all the divisions available
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+### createDivision [POST]
+Creates a new division
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+
+## Get Division [/api/v1/divisions/{id}]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the division you want
+
+### getDivision [GET]
+Get a specific division by ID
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+
+## Get All Clubs From Division [/api/v1/divisions/{id}/clubs]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the division you want
+
+### getAllClubsFromDivision [GET]
+Get a list of all the clubs in this division
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+
+## Nation Membership [/api/v1/divisions/{id}/nations/{nation_id}]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the division you want
+    + nation_id (required, integer, `1`) ... The ID of the nation
+
+### joinNation [GET]
+Join the nation with the division specified
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+### leaveNation [DELETE]
+Leave the nation with the division specified
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
