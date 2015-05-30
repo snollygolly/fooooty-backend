@@ -35,6 +35,7 @@ Gets a web token for use in future calls
                 }
             }
 
+
 # Group Players
 
 ## Player Basics [/api/v1/players]
@@ -116,6 +117,7 @@ Gets all the players currently in the `players` table.
                 }
             ]
 
+
 ### createPlayer [POST]
 Creates a brand new player
 
@@ -140,6 +142,7 @@ Creates a brand new player
               "health": 100,
               "id": 33
             }
+
 
 ## Unsigned Player Listing [/api/v1/players/available]
 
@@ -201,6 +204,7 @@ Gets an array of all unsigned players (limit of 10).
                }
             ]
 
+
 ## Unsigned Player Listing By Position [/api/v1/players/available/{position}]
 
 + Parameters
@@ -245,6 +249,7 @@ Gets an array of all unsigned players that play a specific position (limit of 10
               }
             ]
 
+
 ## Get Player [/api/v1/players/{id}]
 
 + Parameters
@@ -286,6 +291,7 @@ Gets full information about a specific player
                "auction_type":0,
                "auction_price":0
             }
+
 
 ## Get Player With Club [/api/v1/players/{id}/clubs]
 
@@ -349,6 +355,7 @@ Gets full information about a specific player along with the associated club inf
                     }
                 }
             }
+
 
 ## Club Membership [/api/v1/players/{id}/clubs/{club_id}]
 
@@ -430,6 +437,7 @@ Leaves a specific club as a player
               "auction_price": 0
             }
 
+
 ## Start Player [/api/v1/players/{id}/start]
 
 + Parameters
@@ -472,6 +480,7 @@ Changes a player to starting, meaning they wil play in the game
               "auction_price": 0
             }
 
+
 ## Bench Player [/api/v1/players/{id}/bench]
 
 + Parameters
@@ -513,3 +522,182 @@ Benches a specific player to make them not start in the game
               "auction_type": 0,
               "auction_price": 0
             }
+
+
+# Group Clubs
+
+## Club Basics [/api/v1/clubs]
+
+### getAllClubs [GET]
+Gets a list of all the clubs available
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+### createClub [POST]
+Creates a new club
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+
+## Get Club [/api/v1/clubs/{id}]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the club you want
+
+### getClub [GET]
+Get a specific club by ID
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+
+## Get All Players From Club [/api/v1/clubs/{id}/players]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the club you want
+
+### getAllPlayersFromClub [GET]
+Get of list of all the players who are in this club
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+
+## Get All Starting Players From Club [/api/v1/clubs/{id}/players/starting]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the club you want
+
+### getAllStartingPlayersFromClub [GET]
+Get of list of all the players who are marked as starting for this club
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+
+## Get All Benched Players From Club [/api/v1/clubs/{id}/players/benched]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the club you want
+
+### getAllBenchedPlayersFromClub [GET]
+Get of list of all the players who are not marked as starting for this club
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+
+## Join Division [/api/v1/clubs/{id}/divisions/{division_id}]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the club you want
+    + division_id (required, integer, `1`) ... The ID of the division you want to join
+
+### joinDivision [GET]
+Join the division with the club specified
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+
+## Leave Division [/api/v1/clubs/{id}/divisions/{division_id}]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the club you want
+    + division_id (required, integer, `1`) ... The ID of the division you want to leave
+
+### leaveDivision [DELETE]
+Leave the division with the club specified
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+
+## Join Stadium [/api/v1/clubs/{id}/stadiums/{stadium_id}]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the club you want
+    + stadium_id (required, integer, `1`) ... The ID of the stadium you want to join
+
+### joinStadium [GET]
+Join the stadium with the club specified
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+
+## Leave Stadium [/api/v1/clubs/{id}/stadiums/{stadium_id}]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the club you want
+    + stadium_id (required, integer, `1`) ... The ID of the stadium you want to leave
+
+### leaveStadium [DELETE]
+Leave the stadium with the club specified
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+
+## Hire Manager [/api/v1/clubs/{id}/managers/{manager_id}]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the club you want
+    + manager_id (required, integer, `1`) ... The ID of the manager you want to hire
+
+### hireManager [GET]
+Hire the manager specified to the club
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
+
+## Leave Manager [/api/v1/clubs/{id}/managers/{manager_id}]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the club you want
+    + manager_id (required, integer, `1`) ... The ID of the manager you want to hire
+
+### fireManager [DELETE]
+Fire the manager specified from the club
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
