@@ -90,11 +90,6 @@ var Game = {
 			.fetch()
 			.then(function (model) {
 				model = simulateGame(model);
-				// model.set('home_score', model.home_score);
-				// model.set('away_score', model.away_score);
-				// model.set('winner_club_id', model.winner_club_id);
-				// model.set('loser_club_id', model.loser_club_id);
-				// model.set('status', model.status);
 				model.save();
 				res.json(model);
 			}).catch(function (error) {

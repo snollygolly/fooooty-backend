@@ -2,7 +2,7 @@
 node server.js &
 sleep 3
 PID=$!
-dredd apiary.apib http://localhost:4000/
+dredd -h "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidXNlciIsImlhdCI6MTQzMTQ4MjAyNX0.QKx_zWPe0yMu-61_4HQfdLioozBhrtxfGTtMGGxTGQA" apiary.apib http://localhost:4000/
 RESULT=$?
 kill -9 $PID
 exit $RESULT
