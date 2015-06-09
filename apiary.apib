@@ -36,6 +36,45 @@ Gets a web token for use in future calls
             }
 
 
+# Group Managers
+
+## Manager Basics [/api/v1/managers]
+
+### getAllManagers [GET]
+Gets all managers.
+
++ Request
+
+  + Headers
+  
+            Content-Type: application/json
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+            
+## Get Manager [/api/v1/players/{id}]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the manager you want
+
+### getPlayer [GET]
+Gets full information about a specific manager
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+
 # Group Players
 
 ## Player Basics [/api/v1/players]
