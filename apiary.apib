@@ -3,6 +3,8 @@ FORMAT: 1A
 # Fooooty API
 The **Fooooty API** is the heart and soul of **Fooooty**.  The API controls everything anyone can do in the game.
 
+
+
 # Group Main
 
 ## Authenticate [/auth]
@@ -36,44 +38,6 @@ Gets a web token for use in future calls
             }
 
 
-# Group Managers
-
-## Manager Basics [/api/v1/managers]
-
-### getAllManagers [GET]
-Gets all managers.
-
-+ Request
-
-  + Headers
-  
-            Content-Type: application/json
-
-+ Response 200
-
-  + Headers
-
-            Content-Type: application/json; charset=utf-8
-            
-## Get Manager [/api/v1/managers/{id}]
-
-+ Parameters
-    + id (required, integer, `1`) ... The ID of the manager you want
-
-### getManager [GET]
-Gets full information about a specific manager
-
-+ Request
-
-  + Headers
-
-            Content-Type: application/json
-
-+ Response 200
-
-  + Headers
-
-            Content-Type: application/json; charset=utf-8
 
 # Group Players
 
@@ -575,6 +539,34 @@ Gets a list of all the clubs available
   + Headers
 
             Content-Type: application/json
+            
+  + Body 
+  [
+    {
+      "id": 1,
+      "manager_id": 0,
+      "stadium_id": 0,
+      "division_id": 0,
+      "divisional_position": 0,
+      "name": "Collier and Daughters"
+    },
+    {
+      "id": 2,
+      "manager_id": 0,
+      "stadium_id": 0,
+      "division_id": 0,
+      "divisional_position": 0,
+      "name": "Welch LLC"
+    },
+    {
+      "id": 3,
+      "manager_id": 0,
+      "stadium_id": 0,
+      "division_id": 0,
+      "divisional_position": 0,
+      "name": "Lynch Group"
+    }
+  ]
 
 ### createClub [POST]
 Creates a new club
@@ -599,7 +591,16 @@ Get a specific club by ID
   + Headers
 
             Content-Type: application/json
-
+            
+  + Body 
+    {
+      "id": 1,
+      "manager_id": 0,
+      "stadium_id": 0,
+      "division_id": 0,
+      "divisional_position": 0,
+      "name": "Collier and Daughters"
+    }
 
 ## Get All Players From Club [/api/v1/clubs/{id}/players]
 
@@ -652,7 +653,7 @@ Get of list of all the players who are not marked as starting for this club
     + id (required, integer, `1`) ... The ID of the club you want
     + division_id (required, integer, `1`) ... The ID of the division
 
-### joinDivision [GET]
+### joinDivision [PUT]
 Join the division with the club specified
 
 + Request
@@ -677,7 +678,7 @@ Leave the division with the club specified
     + id (required, integer, `1`) ... The ID of the club you want
     + stadium_id (required, integer, `1`) ... The ID of the stadium
 
-### joinStadium [GET]
+### joinStadium [PUT]
 Join the stadium with the club specified
 
 + Request
@@ -702,7 +703,7 @@ Leave the stadium with the club specified
     + id (required, integer, `1`) ... The ID of the club you want
     + manager_id (required, integer, `1`) ... The ID of the manager you want to hire
 
-### hireManager [GET]
+### hireManager [PUT]
 Hire the manager specified to the club
 
 + Request
@@ -733,6 +734,50 @@ Gets a list of all the divisions available
   + Headers
 
             Content-Type: application/json
+            
+  + Body
+    [
+      {
+        "id": 1,
+        "nation_id": 0,
+        "name": "Avon",
+        "tier": 0,
+        "depth": 0,
+        "promotion_to": 0,
+        "number_of_clubs": 0,
+        "regional_location": ""
+      },
+      {
+        "id": 2,
+        "nation_id": 0,
+        "name": "Avon",
+        "tier": 0,
+        "depth": 0,
+        "promotion_to": 0,
+        "number_of_clubs": 0,
+        "regional_location": ""
+      },
+      {
+        "id": 3,
+        "nation_id": 0,
+        "name": "Berkshire",
+        "tier": 0,
+        "depth": 0,
+        "promotion_to": 0,
+        "number_of_clubs": 0,
+        "regional_location": ""
+      },
+      {
+        "id": 4,
+        "nation_id": 0,
+        "name": "Bedfordshire",
+        "tier": 0,
+        "depth": 0,
+        "promotion_to": 0,
+        "number_of_clubs": 0,
+        "regional_location": ""
+      }
+    ]
 
 ### createDivision [POST]
 Creates a new division
@@ -757,7 +802,18 @@ Get a specific division by ID
   + Headers
 
             Content-Type: application/json
-
+            
+  + Body
+    {
+      "id": 3,
+      "nation_id": 0,
+      "name": "Berkshire",
+      "tier": 0,
+      "depth": 0,
+      "promotion_to": 0,
+      "number_of_clubs": 0,
+      "regional_location": ""
+    }
 
 ## Get All Clubs From Division [/api/v1/divisions/{id}/clubs]
 
@@ -773,6 +829,9 @@ Get a list of all the clubs in this division
 
             Content-Type: application/json
 
+
+
+# Group Nations
 
 ## Nation Membership [/api/v1/divisions/{id}/nations/{nation_id}]
 
@@ -797,3 +856,84 @@ Leave the nation with the division specified
   + Headers
 
             Content-Type: application/json
+            
+            
+
+## List All Nations [/api/v1/nations]
+
+### getAllNations [GET]
+
++ Body
+  [
+  {
+    "id": 1,
+    "name": "Jamaica",
+    "size": 0,
+    "group_id": 0,
+    "zone_id": 0,
+    "duration": 0,
+    "slug": "jamaica",
+    "tiers": 0,
+    "divisions_per_tier": 0,
+    "clubs_per_division": 0
+  },
+  {
+    "id": 2,
+    "name": "Anguilla",
+    "size": 0,
+    "group_id": 0,
+    "zone_id": 0,
+    "duration": 0,
+    "slug": "anguilla",
+    "tiers": 0,
+    "divisions_per_tier": 0,
+    "clubs_per_division": 0
+  }
+]
+
+## Get Nation By Id [/api/v1/nations/{id}
+
+### Get Nation Details [GET]
+
+            
+# Group Managers
+
+
+
+## Manager Basics [/api/v1/managers]
+
+### getAllManagers [GET]
+Gets all managers.
+
++ Request
+
+  + Headers
+  
+            Content-Type: application/json
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+            
+## Get Manager [/api/v1/managers/{id}]
+
++ Parameters
+    + id (required, integer, `1`) ... The ID of the manager you want
+
+### getManager [GET]
+Gets full information about a specific manager
+
++ Request
+
+  + Headers
+
+            Content-Type: application/json
+
++ Response 200
+
+  + Headers
+
+            Content-Type: application/json; charset=utf-8
+
